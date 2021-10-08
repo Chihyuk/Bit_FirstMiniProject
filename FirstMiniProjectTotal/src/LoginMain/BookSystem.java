@@ -49,7 +49,7 @@ public class BookSystem {
 	}
 
 
-	public static void signup() {
+	public static void signup(){
 		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -84,7 +84,8 @@ public class BookSystem {
 
 			System.out.println("추가되었습니다.('" +userid+"', '" +passwd+"', '" +username+"', '" +birth+"', '" +phone+ "')");
 
-		}catch (SQLException sql) {
+		}
+		catch (SQLException sql) {
 			System.out.println("실패!");
 			sql.printStackTrace();
 		}finally {

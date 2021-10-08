@@ -61,7 +61,7 @@ public class Cart {
 		ResultSet rs = null;
 
 		String sql = "SELECT * FROM cart join items using(item_num)";
-
+		// String sql = "SELECT * FROM cart";
 		try {
 			con = Connect.makeConnection();
 			ps = con.prepareStatement(sql);

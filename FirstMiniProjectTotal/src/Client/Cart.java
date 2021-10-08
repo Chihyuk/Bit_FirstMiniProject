@@ -60,7 +60,7 @@ public class Cart {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
-		String sql = "SELECT * FROM cart";
+		String sql = "SELECT * FROM cart join items using(item_num)";
 
 		try {
 			con = Connect.makeConnection();
@@ -69,9 +69,9 @@ public class Cart {
 
 			// user id 가져오기
 			String usid = BookSystem.userid;
-			//System.out.println("user id 가져옴");
+			System.out.println(usid);
 
-			System.out.println("장바구니 번호 | 아이디 | 상품번호 | 수량");
+			System.out.println("장바구니 번호 | 아이디 | 상품번호 | 수량 | 가격");
 			while(rs.next()){
 				String loginUT = usid.trim();
 				String selectUT = rs.getString("USERID");
@@ -79,8 +79,9 @@ public class Cart {
 					int cart_id = rs.getInt("cart_id"); 
 					String userid = rs.getString("userid"); 
 					int item_num = rs.getInt("item_num"); 
-					int amount = rs.getInt("amount");  
-					System.out.println(cart_id + " | " + userid + " | " + item_num + " | " + amount);
+					int amount = rs.getInt("amount");
+					int price = rs.getInt("price");
+					System.out.println(cart_id + " | " + userid + " | " + item_num + " | " + amount + " | " + price);
 				}	
 			}
 		} catch (Exception e) {
